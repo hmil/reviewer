@@ -1,0 +1,58 @@
+.starbar {
+  
+}
+
+.starbar .filling {
+  color: #F5DF41;
+}
+
+.starbar .comment {
+  font-size: 1.3em;
+  font-style: italic;
+  color: #444;
+  padding-left: 5pt;
+  display: inline-block;
+}
+
+h3 > .starbar {
+  display: inline;
+}
+
+.thumb {
+  width: 80px;
+}
+
+.thumb-lg {
+  width: 120px;
+}
+
+.thumb-sm {
+  width: 60px;
+}
+
+.reviewed-item {
+  min-height: 100px;
+}
+
+blockquote:before {
+  display: block;
+  height: 0;
+  content: "“";
+  margin-left: -.65em;
+  margin-top: -.1em;
+  font: italic 400%/1 Cochin,Georgia,"Times New Roman", serif;
+  color: #999;
+}
+
+blockquote {
+  color: #888;
+  font-family: Georgia,"Times New Roman",serif;
+  font-style: italic;
+  margin: .3em;
+  margin-left: 2em;
+}
+
+blockquote.splash {
+  font-size: 16px;
+  line-height: 18px;
+}
