@@ -1,5 +1,5 @@
-.starbar {
-  
+.clickable {
+  cursor: pointer;
 }
 
 .starbar .filling {
@@ -55,4 +55,25 @@ blockquote {
 blockquote.splash {
   font-size: 16px;
   line-height: 18px;
+}
+
+textarea, input {
+  background-color: white;
+  width: 100%;  
+}
+
+.input-group {
+  margin-bottom: 20px;
+}
+
+.container {
+  padding: 0 1em;
+}
+
+.spoiler {
+  transition-property: height, opacity;
+  transition-duration: 600ms;
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
 }

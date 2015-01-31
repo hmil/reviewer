@@ -124,30 +124,21 @@
       </ul>
       <h2>Your review</h2>
       <div>
-        <h3>
-        <div class="starbar">
-          <span class="fa-stack fa-lg">
-            <i class="fa fa-star-o fa-stack-2x filling"></i>
-            <i class="fa fa-star-o fa-stack-2x"></i>
-          </span>
-          <span class="fa-stack fa-lg">
-            <i class="fa fa-star-o fa-stack-2x filling"></i>
-            <i class="fa fa-star-o fa-stack-2x"></i>
-          </span>
-          <span class="fa-stack fa-lg">
-            <i class="fa fa-star-o fa-stack-2x filling"></i>
-            <i class="fa fa-star-o fa-stack-2x"></i>
-          </span>
-          <span class="fa-stack fa-lg">
-            <i class="fa fa-star-o fa-stack-2x filling"></i>
-            <i class="fa fa-star-o fa-stack-2x"></i>
-          </span>
-          <span class="fa-stack fa-lg">
-            <i class="fa fa-star-o fa-stack-2x filling"></i>
-            <i class="fa fa-star-o fa-stack-2x"></i>
-          </span>
+        <div class="container">
+          <h3>
+            <div id="myStars"></div>
+            &mdash; <span id="myGrade">Not rated yet</span>
+          </h3>
         </div>
-        &mdash; Not rated yet</h3>
+        <div id="reviewForm" class="container spoiler">
+          <div class="input-group">
+            <input type="text" placeholder="Review title">
+          </div>
+          <div class="input-group">
+            <textarea placeholder="Write your personnal review"></textarea>
+          </div>
+          <button class="action">Submit my review</button>
+        </div>
       </div>
       <h2>Reviews</h2>
       <ul class="list">
@@ -218,5 +209,23 @@
   </article>
   <script src="chocolatechip-3.8.0.js"></script>
   <script src="chui-3.8.2.js"></script>
+  <script src="underscore.js"></script>
+  <script src="starbar.js"></script>
+  <script>
+
+    var grades = [
+      'forget it', 'meh', 'ok', 'good', 'awesome'
+    ];
+    var myGrade = $('#myGrade');
+
+    var reviewForm = $('#reviewForm');
+
+    new StarBar($('#myStars'), {
+      onChange: function(value) {
+        myGrade.text(grades[value-1]);
+        reviewForm.css({'height': '150px', 'opacity': 'initial'})
+      }
+    });
+  </script>
 </body>
 </html>
