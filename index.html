@@ -15,7 +15,7 @@
 <body>
   <nav class="current">
     <h1>Home</h1>
-    <button>Whatever</button>
+    <button data-nav="create-item"><i class="fa fa-plus fa-2x"></i></button>
   </nav>
   <article id="main" class="current">
     <section>
@@ -87,7 +87,47 @@
   </article>
   <nav class="next">
     <button class="back"></button>
+    <h1>New reivew</h1>
+  </nav>
+  <article class="next" id="create-item">
+    <section>
+      <ul class="list">
+        <li class="comp">
+          <aside>
+            <div class="file-upload thumb">
+              <i class="fa fa-camera fa-4x"></i>
+              <input type="file">
+            </div>
+            <!-- <img src="starfish.jpg" alt="starfish" class="thumb"> -->
+          </aside>
+          <div>
+            <div class="input-group">
+              <input type="text" placeholder="Thing title">
+            </diV>
+            <h3>
+              <div id="newThingStar"></div>
+              &mdash; <span id="newThingGrade">Not rated yet</span>
+            </h3>
+            <!-- <blockquote class="splash">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis totam amet unde, ipsum enim obcaecati, delectus atque dolorum molestiae nostrum minus&hellip;</blockquote> -->
+          </div>
+        </li>
+      </ul>
+      <h2>Your review</h2>
+      <div class="container">
+        <div class="input-group">
+          <input type="text" placeholder="Summary">
+        </div>
+        <div class="input-group">
+          <textarea placeholder="Your review"></textarea>
+        </div>
+        <button class="action">Submit my review</button>
+      </div>
+    </section>
+  </article>
+  <nav class="next">
+    <button class="back"></button>
     <h1>Starfish</h1>
+    <button data-nav="create-item"><i class="fa fa-plus fa-2x"></i></button>
   </nav>
   <article class="next" id="starfish-details">
     <section>
@@ -213,6 +253,8 @@
   <script src="starbar.js"></script>
   <script>
 
+    // Review view
+
     var grades = [
       'forget it', 'meh', 'ok', 'good', 'awesome'
     ];
@@ -226,6 +268,24 @@
         reviewForm.css({'height': '150px', 'opacity': 'initial'})
       }
     });
+
+    // New thing view
+
+    var newThingGrade = $('#newThingGrade');
+
+    new StarBar($('#newThingStar'), {
+      onChange: function(value) {
+        newThingGrade.text(grades[value-1]);
+      }
+    });
+
+    $('[data-nav]').each(function(el) {
+      var destination = '#'+$(el).attr('data-nav');
+      $(el).on('singletap', function() {
+        $.UIGoToArticle(destination);
+      });
+    });
+
   </script>
 </body>
 </html>
