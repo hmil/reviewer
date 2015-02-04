@@ -1,0 +1,110 @@
+.clickable {
+  cursor: pointer;
+}
+
+.starbar .filling {
+  color: #F5DF41;
+}
+
+.starbar .comment {
+  font-size: 1.3em;
+  font-style: italic;
+  color: #444;
+  padding-left: 5pt;
+  display: inline-block;
+}
+
+h3 > .starbar {
+  display: inline;
+}
+
+.thumb {
+  width: 80px;
+}
+
+.thumb-lg {
+  width: 120px;
+}
+
+.thumb-sm {
+  width: 60px;
+}
+
+.reviewed-item {
+  min-height: 100px;
+}
+
+blockquote:before {
+  display: block;
+  height: 0;
+  content: "“";
+  margin-left: -.65em;
+  margin-top: -.1em;
+  font: italic 400%/1 Cochin,Georgia,"Times New Roman", serif;
+  color: #999;
+}
+
+blockquote {
+  color: #888;
+  font-family: Georgia,"Times New Roman",serif;
+  font-style: italic;
+  margin: .3em;
+  margin-left: 2em;
+}
+
+blockquote.splash {
+  font-size: 16px;
+  line-height: 18px;
+}
+
+textarea, input, .input-group > input {
+  background-color: white;
+  width: 100%;  
+}
+
+.input-group {
+  margin-bottom: 20px;
+}
+
+.container {
+  padding: 0 1em;
+}
+
+.spoiler {
+  transition-property: height, opacity;
+  transition-duration: 600ms;
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+}
+
+button > .fa-2x {
+  margin-top: -4px;
+}
+
+.file-upload {
+  height: 100%;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+}
+
+.file-upload > * {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.file-upload > input {
+  font-size: 100pt;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  z-index: 11;
+  left: 0;
+}
+
+.file-upload.thumb {
+  height: 80px;
+}

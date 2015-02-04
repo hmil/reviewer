@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="msapplication-tap-highlight" content="no">
+
+  <title>Reviews</title>
+  <link rel="stylesheet" href="lib/chui-android-3.8.2.css">
+  <link rel="stylesheet" href="lib/font-awesome-4.3.0/css/font-awesome.css">
+  <link rel="stylesheet" href="css/custom.css">
+</head>
+<body>
+  <nav class="current">
+    <h1>Splash</h1>
+  </nav>
+  <article class="current">
+    <section>
+      <p>Hello world</p>
+    </section>
+  </article>
+
+  <nav class="next">
+    <h1>Home</h1>
+    <button data-nav="createItem"><i class="fa fa-plus fa-2x"></i></button>
+  </nav>
+  <article id="itemsList" class="next"></article>
+
+  <nav class="next">
+    <button class="back"></button>
+    <h1>New reivew</h1>
+  </nav>
+  <article class="next" id="createItem"></article>
+
+  <script type="text/ejs" id="t_createItem">
+    <section>
+      <ul class="list">
+        <li class="comp">
+          <aside>
+            <div class="file-upload thumb">
+              <i class="fa fa-camera fa-4x"></i>
+              <input type="file">
+            </div>
+            <!-- <img src="starfish.jpg" alt="starfish" class="thumb"> -->
+          </aside>
+          <div>
+            <div class="input-group">
+              <input type="text" placeholder="Thing title" name="title">
+            </diV>
+            <h3>
+              <div id="newItemStar"></div>
+              &mdash; <span id="newItemGrade">Not rated yet</span>
+            </h3>
+          </div>
+        </li>
+      </ul>
+      <h2>Your review</h2>
+      <div class="container">
+        <div class="input-group">
+          <input type="text" placeholder="Summary" name="reviewTitle">
+        </div>
+        <div class="input-group">
+          <textarea placeholder="Your review" name="reviewText"></textarea>
+        </div>
+        <button class="action" id="submitNewThing">Submit my review</button>
+      </div>
+    </section>
+  </script>
+  <script type="text/ejs" id="t_itemsList">
+    <section>
+      <ul class="list">
+        <% items.each(function(item) { %>
+        <li class="comp reviewed-item" data-goto="item-details">
+          <aside><img src="<%- item.get('thumb') %>" alt="<%- item.get('title') %>" class="thumb"></aside>
+          <div>
+            <h3><%- item.get('title') %></h3>
+            <%= starbar(item.get('score')) %>
+          </div>
+          <aside>
+            <div class="show-detail"></div>
+          </aside>
+        </li>
+        <% }); %>
+      </ul>
+    </section>
+  </script>
+  <script src="lib/chocolatechip-3.8.0.js"></script>
+  <script src="lib/chui-3.8.2.js"></script>
+  <script src="lib/underscore.js"></script>
+  <script src="lib/backbone.js"></script>
+  <script src="lib/starbar.js"></script>
+  <script src="js/bundle.js"></script>
+</body>
+</html>
