@@ -24,10 +24,13 @@ local.properties
 .Spotlight-V100
 .Trashes
 
+
 # node & server related stuff
 server/config/local.js
 
 node_modules
+!cordova/platforms/*/cordova/node_modules
+
 bower_components
 
 .tmp
