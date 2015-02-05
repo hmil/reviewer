@@ -12,5 +12,5 @@
 $ ->
   $('[data-nav]').each (el) ->
     destination = $(el).attr('data-nav');
-    $(el).on 'singletap', ->
+    $(el).on 'singletap click', ->
       app.navigateTo(destination)

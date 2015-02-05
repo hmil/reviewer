@@ -52,7 +52,7 @@
     return $('[data-nav]').each(function(el) {
       var destination;
       destination = $(el).attr('data-nav');
-      return $(el).on('singletap', function() {
+      return $(el).on('singletap click', function() {
         return app.navigateTo(destination);
       });
     });
@@ -75,7 +75,7 @@
   this.CreateItemView = Page.extend({
     pageId: 'createItem',
     onNavigation: function(cb) {
-      var newItemGrade;
+      var newItemGrade, setItemThumb, uploadThumbBtn;
       newItemGrade = this.$('#newItemGrade');
       this.starbar = new StarBar(this.$('#newItemStar'), {
         onChange: function(value) {
@@ -87,12 +87,41 @@
           return _this.onSubmit();
         };
       })(this));
+      setItemThumb = (function(_this) {
+        return function(src) {
+          return _this.setItemThumb(src);
+        };
+      })(this);
+      uploadThumbBtn = this.$('#upload-thumb');
+      uploadThumbBtn.on('change', function() {
+        var fd, request;
+        if (!(this.files.length > 0)) {
+          return;
+        }
+        fd = new FormData();
+        fd.append('thumb', this.files[0]);
+        request = new XMLHttpRequest();
+        request.onreadystatechange = function(aEvt) {
+          if (request.readyState === 4) {
+            if (request.status === 200) {
+              return setItemThumb(request.responseText);
+            } else {
+              return alert(request.responseText);
+            }
+          }
+        };
+        request.open("POST", API_URL + "/thumb/upload");
+        return request.send(fd);
+      });
       return cb();
+    },
+    setItemThumb: function(src) {
+      return this.$('#item-thumb').attr('src', src);
     },
     onSubmit: function() {
       var item;
       item = {
-        thumb: '',
+        thumb: this.$('#item-thumb').attr('src'),
         title: this.$('[name=title]').val(),
         score: this.starbar.getValue(),
         reviews: [

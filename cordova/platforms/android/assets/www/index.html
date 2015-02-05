@@ -40,10 +40,9 @@
         <li class="comp">
           <aside>
             <div class="file-upload thumb">
-              <i class="fa fa-camera fa-4x"></i>
-              <input type="file">
+              <input type="file" id="upload-thumb">
+              <img src="img/i_picture.png" alt="upload an image" class="thumb" id="item-thumb">
             </div>
-            <!-- <img src="starfish.jpg" alt="starfish" class="thumb"> -->
           </aside>
           <div>
             <div class="input-group">
@@ -86,11 +85,33 @@
       </ul>
     </section>
   </script>
+  <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
   <script src="lib/chocolatechip-3.8.0.js"></script>
   <script src="lib/chui-3.8.2.js"></script>
   <script src="lib/underscore.js"></script>
   <script src="lib/backbone.js"></script>
   <script src="lib/starbar.js"></script>
   <script src="js/bundle.js"></script>
+
+  <script>
+  document.addEventListener("deviceready", onDeviceReady, false);
+
+  // Cordova is ready
+  //
+  function onDeviceReady() {
+
+    // Retrieve image file location from specified source
+    navigator.camera.getPicture(uploadPhoto,
+      function(message) {
+        alert('get picture failed');
+      }, {
+        quality: 50,
+        destinationType: navigator.camera.DestinationType.FILE_URI,
+        sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
+      }
+    );
+
+  }
+  </script>
 </body>
 </html>
